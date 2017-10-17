@@ -11,3 +11,10 @@ Gemfile.lock
 planet.db
 o/
 build/
+.sass-cache/
+
+###
+# ignore gem bundle
+
+vendor/
+.bundle/

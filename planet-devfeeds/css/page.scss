@@ -1,0 +1,104 @@
+// use  sass page.scss page.css
+//  or  sass --watch page.scss:page.css
+
+$primary-color:    #a1a1a1;
+$secondary-color:  #fff;
+
+$link-color:          #1ab0b5;
+$link-visited-color:  #1ab0b5;
+
+$std-font-size:   22px;
+$mid-font-size:   .9em;
+$small-font-size: 11px;
+
+body {
+	font-family: sans-serif;
+	// font:  Arial, sans-serif;
+	// background-color: #F4F4F4;
+	background: #000 url(//www.unvanquished.net/wp-content/themes/unv/images/background-wbtcn-3.jpg) repeat fixed;
+	color: $primary-color;
+	margin: 0px;
+	padding: 0px;
+}
+
+a {
+	text-decoration: none;
+	color: $link-color; 
+
+	&:visited {
+		color: $link-visited-color;
+	}
+
+	&:hover {
+		text-decoration: underline;
+	}
+}
+
+// Modifications to forum style
+
+.site {
+	margin: auto;
+	max-width: 1152px;
+}
+
+.content {
+	padding-left: 15px;
+	padding-right: 15px;
+	background: #000 url(//www.unvanquished.net/wp-content/themes/unv/images/background-wbtcn-3.jpg) repeat scroll;
+}
+
+.site-footer {
+	background: #0a0a0a;
+	border-top: 5px solid #0e0e0e;
+	box-shadow: inset 0px 0px 30px 0px #000;
+	padding: 15px;
+	padding-bottom: 20px;
+	text-align: center;
+}
+
+.site-footer img {
+	opacity: 0.3;
+	width: 8%;
+}
+
+.site-footer span {
+	display: block;
+	padding-top: $small-font-size ;
+}
+
+.content-title {
+	padding: $std-font-size $std-font-size $std-font-size 0px;
+}
+
+.content-title h2 {
+	display: inline;
+	padding-right: $small-font-size;
+}
+
+// Header Hack
+
+.site-header,
+.page-width {
+	width: 100%;
+}
+
+#unv-navbar div {
+	width: 48%;
+}
+
+@media screen and (max-width: 930px) {
+	#unv-navbar div li,
+	#unv-navbar div:first-child li,
+	#unv-navbar div:nth-child(2) li {
+		width: 22% !important;
+	}
+}
+
+.nav-menu1 {
+	padding-left: 0px;
+}
+
+.menu-main-menu-left-container,
+.menu-main-menu-right-container {
+	font-size: 0pt;
+}

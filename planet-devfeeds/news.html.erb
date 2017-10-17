@@ -1,175 +1,202 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset='utf-8'>
-  <meta name='generator' content='<%= Pluto.generator %>'>
+	<head>
+		<meta charset="utf-8">
+		<title><%= site.title %></title>
+		<!-- unvanquished stuff -->
+		<link rel="shortuct icon" href="//www.unvanquished.net/favicon.ico" />
+		<link rel="stylesheet" href="//forums.unvanquished.net/styles/digi_darkblue/theme/unvanquished.css" />
+		<%= stylesheet_link_tag "css/page" %>
+		<!-- / unvanquished stuff -->
 
-  <title><%= site.title %></title>
+		<!-- pluto specific stuff -->
+		<meta name="generator" content="<%= Pluto.generator %>" />
+		<%= stylesheet_link_tag "css/news" %>
+		<%# = javascript_include_tag "js/jquery-2.0.3.min.js" %><script src="js/jquery-2.0.3.min.js"></script>
+		<%# = javascript_include_tag "js/news.js" %><script src="js/news.js"></script>
+		<!-- / pluto specific stuff -->
 
-  <%= stylesheet_link_tag 'css/news' %>
+		<!-- github specific stuff -->
+		<%= stylesheet_link_tag "css/github" %>
+		<!-- / github specific stuff -->
 
-  <!-- fix: use script_tag  rails-style ??? -->
-  <script src='js/jquery-2.0.3.min.js'></script>
-  <script src='js/news.js'></script>
+		<!-- feeds -->
+		<% site.feeds.each do |feed| %><link rel="alternate" type="application/rss+xml" title="<%= feed.title %> Feeds" href="<%= feed.feed_url %>" />
+		<% end %><!-- / feeds -->
+	</head>
+	<body>
+		<!-- page -->
+		<div class="site">
+			<!-- header -->
+			<!-- copy pasted from forums -->
+			<a id="top" class="anchor" accesskey="t"></a>
+			<div id="page-header" class="page-width">
+				<div class="headerbar" role="banner">
+					<!-- inner -->
+					<div class="inner">
+						<!-- main navbar -->
+						<header id="masthead" class="site-header" role="banner">
+							<div class="header-main">
+								<nav class="unv-navbar navbar-inverse navbar-fixed-top" role="navigation">
+									<!-- container -->
+									<div class="container">
+										<!-- .nav-collapse -->
+										<div id="unv-navbar" class="collapse navbar-collapse">
+											<div class="menu-main-menu-left-container">
+												<ul id="menu-main-menu-left" class="navbar-nav nav-menu1">
+													<li id="menu-item-338" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-338"><a href="//www.unvanquished.net/?page_id=332">Media</a></li>
+													<li id="menu-item-339" class="menu-item menu-item-type-taxonomy menu-item-object-category menu-item-339"><a href="//www.unvanquished.net/?cat=3">News</a></li>
+													<li id="menu-item-322" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-322"><a href="https://github.com/Unvanquished/Unvanquished/releases" target="_blank">Download</a></li>
+													<li id="menu-item-587" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-587"><a href="//www.unvanquished.net/?page_id=336">About</a></li>
+												</ul>
+											</div>
+											<div class="menu-main-menu-right-container">
+												<ul id="menu-main-menu-right" class="navbar-nav nav-menu2">
+													<li id="menu-item-344" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-344"><a href="//forums.unvanquished.net/">Forum</a></li>
+													<li id="menu-item-343" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-343"><a href="//wiki.unvanquished.net/index.php?title=Main_Page">Wiki</a></li>
+													<li id="menu-item-342" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-342"><a href="//www.unvanquished.net/?page_id=340">Servers</a></li>
+													<li id="menu-item-345" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-345"><a href="//www.unvanquished.net/?page_id=334">Chat</a></li>
+												</ul>
+											</div>
+										</div>
+										<!-- / .nav-collapse -->
+										<a class="header-logo header-logo-active" href="//unvanquished.net/">
+											<img src="//www.unvanquished.net/wp-content/themes/unv/images/u-logo.png" />
+										</a>
+									</div>
+									<!-- container -->
+								</nav>
+								<h1 class="site-title">
+									<a href="//www.unvanquished.net/" rel="home"><img id="big-logo" title="Unvanquished" src="//www.unvanquished.net/wp-content/themes/unv/images/unvanquished.png" alt="Unvanquished" /></a>
+								</h1>
+								<img class="tyrant" src="//www.unvanquished.net/wp-content/themes/unv/images/tyrant.gif" />
+							</div>
+						</header>
+						<!-- / main navbar -->
+					</div>
+					<!-- / inner -->
+				</div>
+			</div>
+			<!-- / copy pasted from forums -->
+			<!-- / header -->
 
-  <%# = javascript_include_tag 'js/jquery-2.0.3.min.js' %>
-  <%# = javascript_include_tag 'js/news.js' %>
+			<!-- content -->
+			<div class="content stream">
+				<div class="content-title">
+					<h2><a href="//www.unvanquished.net">Unvanquished</a>&nbsp;🢒 Development&nbsp;activity</h2>
+					<span class="snippet-switches">
+						<img src="i/view-headlines.png" id="show-headlines" title="Switch to headlines only view" width="16" height="16" />
+						<img src="i/view-snippets.png"  id="show-snippets"  title="Switch to snippet view"        width="16" height="16" />
+					</span>
+				</div>
+				<p class="subscriptions small">Events from:
+					<ul class="subscriptions small">
+						<% site.feeds.each do |feed| %>
+						<li class="subscriptions small">
+							<%= link_to( image_tag("i/feed-icon-10x10.png"), feed.feed_url ) %>
+							<%= link_to feed.title, feed.url %>
+						</li>
+						<% end %>
+					</ul>
+				</p>
+				<!--
+				TODO: order first by date and than by feed and than by datetime
+				- lets us group all feed items of a feed group together
+				-->
+				<% items = site.items.latest.limit(100)
+				ItemCursor.new( items ).each do |item, new_date, new_feed| %>
+				<div class="section">
+				<% if new_feed %>
+					<div class="header">
+						<table width="100%">
+							<tr>
+								<!-- icon/logo -->
+								<td>
+									<div style="width: 40px">
+										<a href="<%= item.feed.url %>"><img class="item-feed-avatar" alt="<%= item.feed.title %>" name="<%= item.feed.title %>" src="<%= item.feed.avatar %>" /></a>
+									</div>
+								</td>
+								<!-- / icon/logo -->
+								<td class="item-feed-title">
+									<%= link_to( item.feed.title, item.feed.url) %></td>
+								<% if new_date %>
+								<td width="100%"><hr class="filler" /></td><!-- filler / -->
+								<!-- item published -->
+								<td style="white-space: nowrap;">
+									<span class="item-published"><%= item.published.strftime("%A, %d %B %Y") %></span>
+								</td>
+								<!-- / item published -->
+								<% else %>
+								<td width="100%">
+									<!--
+									NOTE: width is a suggestion; will get smaller to fill space
+									-->
+								</td>
+								<% end %>
+							</tr>
+						</table>
+					</div>
+					<% end %>
+					<div class="item">
+						<table width="100%">
+							<tr>
+								<td>
+									<div class="item-title" />
+										<%= link_to item.title, item.url %>
+									</div>
+									<div class="item-body">
+										<div class="item-snippet">
+											<!-- use "smarter" algorithm for cutoff snippet text
+											note: summary goes first; than try content -->
+											<% if item.summary %>
+											<%= textify( item.summary ) %>
+											<% elsif item.content %>
+											<%= item.content %>
+											<% else %>
+											-/-
+											<% end %>
+										</div>
+										<div class="item-footer">
+											<%= item.published.strftime("%H:%M") %>	&bull;
+											<span class="item-time-ago-in-words">
+												<%= time_ago_in_words( item.published ) %>
+											</span>
+										</div>
+									</div>
+									<!-- / item-body -->
+								</td>
+							</tr>
+						</table>
+					</div>
+					<!-- / item -->
+				</div>
+				<!-- / section -->
+				<% end %>
+				<!-- / each item -->
+				<div class="header">
+					<table width="100%">
+						<tr>
+							<td>
+								 <div style="width: 50px; max-width: 50px;"></div>	
+							</td>
+							<!--
+							<td width="100%">
+								<hr class="item-separator">
+							</td>
+							-->
+						</tr>
+					</table>
+				</div>
+			</div>
+			<!-- / content -->
 
-</head>
-<body>
-
-<h1><%= site.title %></h1>
-
-<div class='stream' style='width: 800px;'>
-
-<table>
- <tr>
-  <td>
-     <div style='width: 50px; max-width: 50px;'></div>
-  </td>
-  <td width='100%'>
-   <!-- 2st column; filler column -->
-  <img src='i/view-headlines.png' id='show-headlines'  title='Switch to headlines only view' width='16' height='16'>
-  <img src='i/view-snippets.png'  id='show-snippets'   title='Switch to snippet view'        width='16' height='16'>
-  <img src='i/view-standard.png'  id='show-fulltext'   title='Switch to full text view'      width='16' height='16'>
-  </td>
-  <td class='last-update' style='white-space: nowrap; text-align: right;'>
-   <!-- 3nd column -->
-    Updated
-   <% if site.fetched %>
-      <%= site.fetched.strftime('%A, %d %B %Y %H:%M') %>
-   <% end %>
-  </td>
- </tr>
-</table>
-
-<!--
-  todo: order first by date and than by feed and than by datetime
-    - lets us group all feed items of a feed group together
- -->
-
-<%
-   items = site.items.latest.limit(24)
-   ItemCursor.new( items ).each do |item, new_date, new_feed|
-%>
-
-<div class='section' style='width: 800px;'>
-
-
-<% if new_feed %>
-<div class='header'>
-  <table width='100%'>
-   <tr>
-     <td>
-        <div style='width: 50px'>{}</div>
-     </td><!-- icon/logo -->
-     <td style='white-space: nowrap;'>
-       <span class='feed-title'>
-         <%= link_to item.feed.title, item.feed.url %>
-        (
-         <%= link_to 'Feed', item.feed.feed_url %>
-        )
-       </span>
-     </td><!-- feed title -->
-     <% if new_date %>
-     <td width='100%'>
-          <hr class='filler'>
-     </td><!-- filler -->
-      <td style='white-space: nowrap;'>
-       <span class='item-published'><%= item.published.strftime('%A, %d %B %Y') %></span>
-      </td><!-- item published -->
-     <% else %>
-     <td width='100%'>
-          <!-- note: width is a suggestion; will get smaller to fill space-->
-     </td>
-     <% end %>
-   </tr>
-  </table>
-</div>
-<% end %>
-
-<div class='item' style='width: 800px;'>
-
-<table width='100%'>
-  <tr>
-    <td>
-       <div style='width: 50px; max-width: 50px;'></div>  
-    </td><!-- icon/logo; dummy for space -->
-    <td width='100%'>
-        <span class='item-title'>
-          <%= link_to item.title, item.url %>
-        </span>
-    </td>
-  </tr>
-
-  <tr>
-    <td>
-       <div style='width: 50px; max-width: 50px;'></div>
-    </td><!-- icon/logo; dummy for space -->
-    <td width='100%'>
-
-<div class='item-body'>
-
-<div class='item-snippet'>
-<!-- use 'smarter' algorithm for cutoff snippet text
-   note: summary goes first; than try content -->
-<% if item.summary %>
-  <%= textify( item.summary )[0..300] %>
-<% elsif item.content %>
-  <%= textify( item.content )[0..300] %>
-<% else %>
-  -/-
-<% end %>
-</div>
-
-<div class='item-content item-summary'>
-<!-- todo: use sanitize or simplify or whitelist
-   - todo/fix: check why summary can be nil/null
-   note: content goes first; than try summary
- -->
-<% if item.content %>
-  <%= textify( item.content ) %>
-<% elsif item.summary %>
-  <%= textify( item.summary ) %>
-<% else %>
-  -/-
-<% end %>
-</div>
-
-<div class='item-footer'>
-  <%= item.published.strftime('%H:%M') %>  &bull;
-    <span class='item-time-ago-in-words'>
-       <%= time_ago_in_words( item.published ) %>
-    </span>
-</div>
-
-</div><!-- item-body -->
-
-    </td>
-  </tr>
-</table>
-
-</div>  <!-- item -->
-</div> <!-- section -->
-
-
-<% end %><!-- each item -->
-
-
-<div class='header'>
-<table width='100%'>
-  <tr>
-    <td>
-       <div style='width: 50px; max-width: 50px;'></div>  
-    </td>
-    <td width='100%'>
-       <hr class='item-separator'>
-    </td>
-  </tr>
-</table>
-</div>
-
-</div> <!-- stream -->
-
-</body>
+			<!-- footer -->
+			<div class="site-footer">
+				<a href="//unvanquished.net"><img src="//www.unvanquished.net/wp-content/themes/unv/images/unvdev.png" alt="Unvanquished Development" /></a>
+				<span>made with <a href="https://github.com/feedreader/pluto">Pluto planet software</a></span>
+			</div>
+			<!-- / footer -->
+		</div>
+		<!-- page -->
+	</body>
 </html>

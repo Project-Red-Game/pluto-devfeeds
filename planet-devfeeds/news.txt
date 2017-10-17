@@ -1,9 +1,8 @@
 # pakman manifest
 
-__file__.news.html  news.html.erb
+news.html  news.html.erb
 
-css/news.css
-
+i/feed-icon-10x10.png
 i/view-headlines.png
 i/view-snippets.png
 i/view-standard.png

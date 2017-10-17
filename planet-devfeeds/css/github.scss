@@ -1,0 +1,125 @@
+// use  sass news.scss news.css
+//  or  sass --watch news.scss:news.css
+
+$primary-color:    #a1a1a1;
+$secondary-color:  #fff;
+
+$link-color:          #1ab0b5;
+$link-visited-color:  #1ab0b5;
+
+$std-font-size:   22px;
+$mid-font-size:   .9em;
+$small-font-size: 11px;
+
+// GitHub specific 
+
+$margin-left: 40px;
+$margin-top: 1em;
+
+.commits ul li span img  {
+	background-color: #fff;
+	width: $small-font-size !important;
+	height: $small-font-size !important;
+}
+
+svg.octicon {
+	fill: $secondary-color;
+	width: $small-font-size !important;
+	height: $small-font-size !important;
+}
+
+.item-snippet svg.dashboard-event-icon {
+	width: $small-font-size !important;
+	height: $small-font-size !important;
+}
+
+relative-time {
+	display: none;
+}
+
+.item-snippet .time {
+	font-size: $small-font-size;
+	color: $secondary-color;
+	font-style: italic;
+	display: inline;
+}
+
+.item-snippet .title {
+	font-size: $small-font-size;
+	color: $secondary-color;
+	font-style: italic;
+	display: inline;
+}
+
+.item-snippet .details {
+	display: table-row;
+}
+
+.item-snippet .details > a {
+	display: table-cell;
+	vertical-align: top;
+}
+
+.item-snippet .details > a img {
+	padding-top: 0px;
+}
+
+.item-snippet .details > div {
+	display: table-cell;
+	vertical-align: top;
+	padding: 0px $small-font-size 0px $small-font-size;
+}
+
+.item-snippet .details > div ul {
+	padding-left: $small-font-size;
+}
+
+.item-snippet .details > div blockquote {
+	margin: 0px;
+}
+
+div.diffstat,
+div.item-title {
+	margin-left: $margin-left;
+}
+
+div.commits {
+	margin-top: $margin-top;
+}
+
+div.commits > ul > li > div.message > blockquote {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}
+
+div.item-footer {
+	margin-top: $margin-top;
+}
+
+// avatar hack
+img.avatar {
+	position: relative;
+	top: -40px;
+	margin-bottom: -30px;
+	width: 32px;
+	height: 32px;
+}
+
+// merge request hack (set title on icon line)
+div.ml-4,
+div.ml-4 > div {
+	display: inline;
+}
+
+// more merge request hack (set comment margin)
+// and close issue
+div.ml-4 > div > p,
+div.ml-4 > p {
+	margin-left: $margin-left;
+	margin-top: $margin-top;
+}
+
+// issue comment number hack
+div.f6 {
+	margin-left: $margin-left;
+}

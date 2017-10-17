@@ -1,0 +1,12 @@
+# pakman manifest
+
+__file__.news.html  news.html.erb
+
+css/news.css
+
+i/view-headlines.png
+i/view-snippets.png
+i/view-standard.png
+
+js/jquery-2.0.3.min.js
+js/news.js

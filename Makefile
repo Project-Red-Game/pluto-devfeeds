@@ -20,7 +20,7 @@ css:
 
 build: css
 	# it automatically finds planet-devfeeds/news.txt
-	bundle exec pluto merge -t news -o build ../planet.ini 
+	bundle exec pluto merge -t news -o build planet.ini
 	# rewrite relative GitHub url (they must not do that, it's wrong to do that in a feed)
 	sed -e 's#href="/\([^/]\)#href="https://github.com/\1#g' -i build/news.html
 	# file was rendered to a temporary file because they can be some race condition

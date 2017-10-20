@@ -103,7 +103,7 @@ div.commits > ul > li > div.message > blockquote {
 // avatar hacks
 img.avatar {
 	position: relative;
-	top: 38px;
+	top: 40px;
 	margin-bottom: -30px;
 	width: 32px;
 	height: 32px;
@@ -146,14 +146,6 @@ div.f6 {
 div.rounded-1 {
 	margin-left: $margin-left;
 	margin-top: $margin-top;
-}
-
-// cut out subtitle
-div.d-flex > div {
-	max-width: 740px;
-	white-space: nowrap;
-	overflow: hidden;
-	text-overflow: ellipsis;
 }
 
 // hide all “more” links

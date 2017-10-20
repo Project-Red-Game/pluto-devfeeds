@@ -95,6 +95,12 @@ hr.filler {
 	padding-bottom: 7px;
 }
 
+@media screen and (max-width: 768px) {
+	.item table {
+		padding-left: 0px;
+	}
+}
+
 .item table tr td {
 	background-color: #000;
 	padding: $small-font-size;

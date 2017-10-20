@@ -17,6 +17,7 @@ css:
 	sass planet-devfeeds/css/page.scss build/css/page.css
 	sass planet-devfeeds/css/news.scss build/css/news.css
 	sass planet-devfeeds/css/github.scss build/css/github.css
+	sass planet-devfeeds/css/gitlab.scss build/css/gitlab.css
 
 build: css
 	# it automatically finds planet-devfeeds/news.txt

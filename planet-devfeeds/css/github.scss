@@ -1,5 +1,5 @@
-// use  sass news.scss news.css
-//  or  sass --watch news.scss:news.css
+// use  sass github.scss github.css
+//  or  sass --watch github.scss:github.css
 
 $primary-color:    #a1a1a1;
 $secondary-color:  #fff;
@@ -11,10 +11,10 @@ $std-font-size:   22px;
 $mid-font-size:   .9em;
 $small-font-size: 11px;
 
-// GitHub specific 
-
 $margin-left: 40px;
 $margin-top: 1em;
+
+// GitHub specific
 
 .commits ul li span img  {
 	background-color: #fff;
@@ -76,10 +76,14 @@ relative-time {
 
 .item-snippet .details > div blockquote {
 	margin: 0px;
+	padding: 0px;
 }
 
-div.diffstat,
-div.item-title {
+div.message blockquote {
+	margin-bottom: 0px;
+}
+
+div.diffstat {
 	margin-left: $margin-left;
 }
 
@@ -92,17 +96,25 @@ div.commits > ul > li > div.message > blockquote {
 	margin-bottom: 0px;
 }
 
-div.item-footer {
-	margin-top: $margin-top;
-}
-
-// avatar hack
+// avatar hacks
 img.avatar {
 	position: relative;
-	top: -40px;
+	top: 38px;
 	margin-bottom: -30px;
 	width: 32px;
 	height: 32px;
+}
+
+div.py-3 {
+	margin-top: -1em;
+}
+
+div.py-3 > a {
+	font-size: 0%;
+}
+
+div.mt-3 {
+	min-height: 2.5em;
 }
 
 // merge request hack (set title on icon line)
@@ -115,11 +127,32 @@ div.ml-4 > div {
 // and close issue
 div.ml-4 > div > p,
 div.ml-4 > p {
-	margin-left: $margin-left;
+//	margin-left: $margin-left;
 	margin-top: $margin-top;
+}
+
+.commits li {
+	list-style-type: none;
 }
 
 // issue comment number hack
 div.f6 {
 	margin-left: $margin-left;
+}
+
+div.rounded-1 {
+	margin-left: $margin-left;
+	margin-top: $margin-top;
+}
+
+// GitLab stuff
+
+div.item-snippet {
+	max-height: 10em;
+	overflow-y: hidden;
+}
+
+div.item-snippet pre {
+	margin-top: 0px;
+	margin-bottom: 0px;
 }

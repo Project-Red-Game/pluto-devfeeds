@@ -11,6 +11,9 @@ $std-font-size:   22px;
 $mid-font-size:   .9em;
 $small-font-size: 11px;
 
+$margin-left: 40px;
+$margin-top: 1em;
+
 .last-update,
 .last-updated {
 	font-size: $small-font-size;
@@ -123,4 +126,28 @@ hr.filler {
 
 p.subscription {
 	margin-bottom: 1em;
+}
+
+div.item td {
+	padding-top: 0px !important;
+	padding-bottom: 0px !important;
+}
+
+div.item-snippet {
+	margin-bottom: 0px;
+}
+
+div.item-footer {
+	padding-top: $margin-top;
+}
+
+div.item-snippet,
+div.item-footer {
+	margin-left: 2px;
+	padding-left: 11px;
+	border-left: thin solid grey;
+}
+
+p:empty {
+	font-size: 0px;
 }

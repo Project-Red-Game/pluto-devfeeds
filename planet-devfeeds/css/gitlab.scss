@@ -1,0 +1,28 @@
+// use  sass gitlab.scss gitlab.css
+//  or  sass --watch gitlab.scss:gitlab.css
+
+$primary-color:    #a1a1a1;
+$secondary-color:  #fff;
+
+$link-color:          #1ab0b5;
+$link-visited-color:  #1ab0b5;
+
+$std-font-size:   22px;
+$mid-font-size:   .9em;
+$small-font-size: 11px;
+
+$margin-left: 40px;
+$margin-top: 1em;
+
+// GitLab specific
+
+// shorten full-length comments
+div.item-snippet {
+	max-height: 10em;
+	overflow-y: hidden;
+}
+
+div.item-snippet pre {
+	margin-top: 0px;
+	margin-bottom: 0px;
+}

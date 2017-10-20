@@ -20,6 +20,10 @@
 		<%= stylesheet_link_tag "css/github" %>
 		<!-- / github specific stuff -->
 
+		<!-- gitlab specific stuff -->
+		<%= stylesheet_link_tag "css/gitlab" %>
+		<!-- / gitlab specific stuff -->
+
 		<!-- feeds -->
 		<% site.feeds.each do |feed| %><link rel="alternate" type="application/rss+xml" title="<%= feed.title %> Feeds" href="<%= feed.feed_url %>" />
 		<% end %><!-- / feeds -->

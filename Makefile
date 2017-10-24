@@ -19,7 +19,7 @@ css:
 	sass planet-devfeeds/css/github.scss build/css/github.css
 	sass planet-devfeeds/css/gitlab.scss build/css/gitlab.css
 
-build: css
+page:
 	# it automatically finds planet-devfeeds/news.txt
 	bundle exec pluto merge -t news -o build planet.ini
 	# rewrite relative GitHub url (they must not do that, it's wrong to do that in a feed)
@@ -28,5 +28,7 @@ build: css
 	# between pluto rendering this page and people querying the page from server
 	# hence we copy the page when it's ready, which is fast (uses CoW if possible)
 	cp -a --reflink=auto build/news.html build/index.html
+
+build: css page
 
 all: update build

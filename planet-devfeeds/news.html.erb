@@ -161,10 +161,9 @@
 											<% end %>
 										</div>
 										<div class="item-footer">
-											<%= item.published.strftime("%H:%M") %>	&bull;
-											<span class="item-time-ago-in-words">
-												<%= time_ago_in_words( item.published ) %>
-											</span>
+											<span class="item-date-time"><%= item.published.strftime("%Y-%m-%d %H:%M") %></span>
+											&bull;
+											<span class="item-time-ago-in-words"><%= time_ago_in_words( item.published ) %></span>
 										</div>
 									</div>
 									<!-- / item-body -->

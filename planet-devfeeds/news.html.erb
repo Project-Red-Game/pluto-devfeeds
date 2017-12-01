@@ -23,6 +23,10 @@
 		<!-- gitlab specific stuff -->
 		<%= stylesheet_link_tag "css/gitlab" %>
 		<!-- / gitlab specific stuff -->
+
+		<!-- feeds -->
+		<% site.feeds.each do |feed| %><link rel="alternate" type="application/rss+xml" title="<%= feed.title %> Feeds" href="<%= "feed/" + feed.key %>" />
+		<% end %><!-- / feeds -->
 	</head>
 	<body>
 		<!-- page -->
@@ -93,6 +97,7 @@
 					<ul class="subscriptions small">
 						<% site.feeds.each do |feed| %>
 						<li class="subscriptions small unbreakable">
+							<%= link_to( image_tag("i/feed-icon-10x10.png"), "feed/" + feed.key ) %>
 							<%= link_to feed.title, feed.url %>
 						</li>
 						<% end %>

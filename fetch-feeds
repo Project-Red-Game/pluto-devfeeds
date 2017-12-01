@@ -1,0 +1,53 @@
+#! /usr/bin/env python3
+#-*- coding: UTF-8 -*-
+
+# Author:  Unvanquished Development
+# License: CC0 1.0 <http://creativecommons.org/publicdomain/zero/1.0/>
+
+import __main__ as m
+import argparse
+import configparser
+import urllib.request
+import os
+
+default_output_dir = "build"
+
+prog_name = os.path.basename(m.__file__)
+description="%(prog)s scrap pluto feeds."
+args_parser = argparse.ArgumentParser(description=description, prog=prog_name)
+args_parser.add_argument("-o", "--output-dir", dest="output_dir", metavar="DIRNAME", default=default_output_dir, help="set output dir (default: " + default_output_dir + ")")
+args = args_parser.parse_args()
+
+build_dir = args.output_dir
+feed_dir = os.path.join(build_dir, "feed")
+
+os.makedirs(feed_dir, exist_ok=True)
+
+# HACK: planet.ini has some value outside section, something that is unsupported by python's configparser
+# Let's praise for someone never adding more than one line outside of sections
+config_file_handler = open("planet.ini", "r")
+config_file_handler.readline()
+
+# Let's now read the remaining bits of the config file
+planet_config = configparser.ConfigParser()
+planet_config.read_file(config_file_handler)
+
+# We can close the file handler now, we got everything we need
+config_file_handler.close()
+
+for feed_key in planet_config.keys():
+	if feed_key == "DEFAULT":
+		continue
+	
+	print("scrapping feed: " + feed_key)
+	feed_url = planet_config.get(feed_key, "hidden_feed")
+	response = urllib.request.urlopen(feed_url)
+	feed_content = response.read().decode("utf-8")
+
+	# HACK: workaround relative github urls
+	if feed_url.startswith("https://github.com/"):
+		feed_content = feed_content.replace("href=&quot;/", "href=&quot;https://github.com/")
+
+	feed_file_handler = open(os.path.join(feed_dir, feed_key), "w")
+	feed_file_handler.write(feed_content)
+	feed_file_handler.close()

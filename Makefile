@@ -9,6 +9,7 @@ check:
 	bundle exec pluto help
 
 update:
+	python3 fetch-feeds -o build
 	bundle exec pluto update planet.ini
 
 css:
@@ -22,8 +23,6 @@ css:
 page:
 	# it automatically finds planet-devfeeds/news.txt
 	bundle exec pluto merge -t news -o build planet.ini
-	# rewrite relative GitHub url (they must not do that, it's wrong to do that in a feed)
-	sed -e 's#href="/\([^/]\)#href="https://github.com/\1#g' -i build/news.html
 	# file was rendered to a temporary file because they can be some race condition
 	# between pluto rendering this page and people querying the page from server
 	# hence we copy the page when it's ready, which is fast (uses CoW if possible)

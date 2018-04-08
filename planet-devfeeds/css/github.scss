@@ -11,7 +11,7 @@ $std-font-size:   22px;
 $mid-font-size:   .9em;
 $small-font-size: 11px;
 
-$margin-left: 40px;
+$margin-left: 3em;
 $margin-top: 1em;
 
 // GitHub specific
@@ -86,7 +86,7 @@ div.item-snippet {
 
 div.markdown-body blockquote p,
 div.markdown-body p {
-	margin-left: 3em;
+	margin-left: $margin-left;
 }
 
 div.message blockquote {

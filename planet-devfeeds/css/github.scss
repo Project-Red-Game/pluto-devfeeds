@@ -37,6 +37,7 @@ relative-time {
 	display: none;
 }
 
+// reserve space for avatar
 div.item-snippet {
 	min-height: 5em;
 }
@@ -81,6 +82,10 @@ div.item-snippet {
 .item-snippet .details > div blockquote {
 	margin: 0px;
 	padding: 0px;
+}
+
+div.markdown-body blockquote p {
+	margin-left: 3em;
 }
 
 div.message blockquote {
@@ -142,9 +147,17 @@ div.ml-4 > p {
 	list-style-type: none;
 }
 
-// issue comment number hack
-div.f6 {
-	margin-left: $margin-left;
+div.message div.mb-1 {
+	display: none;
+}
+
+div.message p {
+	padding-top: 1em;
+}
+
+div.message blockquote {
+	margin-top: 0px;
+	margin-left: 0px;
 }
 
 div.rounded-1 {

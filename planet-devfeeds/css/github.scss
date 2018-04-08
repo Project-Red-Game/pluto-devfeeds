@@ -37,6 +37,10 @@ relative-time {
 	display: none;
 }
 
+div.item-snippet {
+	min-height: 5em;
+}
+
 .item-snippet .time {
 	font-size: $small-font-size;
 	color: $secondary-color;

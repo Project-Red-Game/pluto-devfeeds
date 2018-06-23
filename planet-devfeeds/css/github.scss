@@ -84,9 +84,13 @@ div.item-snippet {
 	padding: 0px;
 }
 
-div.markdown-body blockquote p,
-div.markdown-body p {
+div.Box {
+	margin-top: 1em;
 	margin-left: $margin-left;
+}
+
+div.git-branch div.Box {
+	margin-top: 1em;
 }
 
 div.message blockquote {
@@ -105,6 +109,17 @@ div.commits {
 	margin-top: $margin-top;
 }
 
+div.commits ul {
+	padding-left: 0pt;
+}
+
+div.commits ul blockquote {
+	margin-top: 0p;
+	margin-right: 0pt;
+	margin-bottom: 0pt;
+	margin-left: 1em;
+}
+
 div.commits > ul > li > div.message > blockquote {
 	margin-top: 0px;
 	margin-bottom: 0px;
@@ -113,10 +128,18 @@ div.commits > ul > li > div.message > blockquote {
 // avatar hacks
 img.avatar {
 	position: relative;
-	top: 40px;
 	margin-bottom: -30px;
 	width: 32px;
 	height: 32px;
+}
+
+div.issues_opened img.avatar,
+div.issues_comment img.avatar,
+div.issues_closed img.avatar,
+div.git-branch img.avatar,
+div.fork img.avatar,
+div.push img.avatar {
+	top:  3em;
 }
 
 div.py-3 {
@@ -152,10 +175,7 @@ div.message div.mb-1 {
 	display: none;
 }
 
-div.message p {
-	padding-top: 1em;
-}
-
+div.dashboard-break-word blockquote,
 div.message blockquote {
 	margin-top: 0px;
 	margin-left: 0px;

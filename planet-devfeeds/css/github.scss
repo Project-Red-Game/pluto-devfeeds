@@ -102,7 +102,7 @@ li div.message blockquote {
 }
 
 div.diffstat {
-	margin-left: $margin-left;
+	margin-left: 0px;
 }
 
 div.commits {
@@ -114,7 +114,7 @@ div.commits ul {
 }
 
 div.commits ul blockquote {
-	margin-top: 0p;
+	margin-top: 0pt;
 	margin-right: 0pt;
 	margin-bottom: 0pt;
 	margin-left: 1em;
@@ -138,7 +138,8 @@ div.issues_comment img.avatar,
 div.issues_closed img.avatar,
 div.git-branch img.avatar,
 div.fork img.avatar,
-div.push img.avatar {
+div.push img.avatar,
+div.tag img.avatar {
 	top:  3em;
 }
 

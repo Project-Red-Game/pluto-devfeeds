@@ -22,8 +22,10 @@ css:
 
 page:
 	# it automatically finds planet-devfeeds/news.txt
-	bundle exec pluto merge -t news -o build planet.ini
-	# file was rendered to a temporary file because they can be some race condition
+	# sometime it fails but works the next time
+	bundle exec pluto merge -t news -o build planet.ini \
+	|| bundle exec pluto merge -t news -o build planet.ini
+	# file was rendered to a temporary file because there can be some race condition
 	# between pluto rendering this page and people querying the page from server
 	# hence we copy the page when it's ready, which is fast (uses CoW if possible)
 	cp -a --reflink=auto build/news.html build/index.html

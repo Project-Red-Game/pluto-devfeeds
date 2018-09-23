@@ -10,7 +10,9 @@ check:
 
 update:
 	python3 fetch-feeds -o build
-	bundle exec pluto update planet.ini
+	# sometime it fails but works the next time
+	bundle exec pluto update planet.ini \
+	|| bundle exec pluto update planet.ini
 
 css:
 	# it looks like pluto does not call sass itself
@@ -22,9 +24,7 @@ css:
 
 page:
 	# it automatically finds planet-devfeeds/news.txt
-	# sometime it fails but works the next time
-	bundle exec pluto merge -t news -o build planet.ini \
-	|| bundle exec pluto merge -t news -o build planet.ini
+	bundle exec pluto merge -t news -o build planet.ini
 	# file was rendered to a temporary file because there can be some race condition
 	# between pluto rendering this page and people querying the page from server
 	# hence we copy the page when it's ready, which is fast (uses CoW if possible)

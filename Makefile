@@ -17,10 +17,10 @@ update:
 css:
 	# it looks like pluto does not call sass itself
 	mkdir -p build/css
-	sass planet-devfeeds/css/page.scss build/css/page.css
-	sass planet-devfeeds/css/news.scss build/css/news.css
-	sass planet-devfeeds/css/github.scss build/css/github.css
-	sass planet-devfeeds/css/gitlab.scss build/css/gitlab.css
+	sassc planet-devfeeds/css/page.scss build/css/page.css
+	sassc planet-devfeeds/css/news.scss build/css/news.css
+	sassc planet-devfeeds/css/github.scss build/css/github.css
+	sassc planet-devfeeds/css/gitlab.scss build/css/gitlab.css
 
 page:
 	# it automatically finds planet-devfeeds/news.txt

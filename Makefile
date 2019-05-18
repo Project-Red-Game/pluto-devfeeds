@@ -1,6 +1,6 @@
-.DEFAULT_GOAL := all
+.DEFAULT_GOAL := update
 
-.PHONY: all build css check prepare update rsync
+.PHONY: build css check page prepare update upgrade
 
 prepare:
 	bundle install --path vendor/bundle
@@ -8,7 +8,10 @@ prepare:
 check:
 	bundle exec pluto help
 
-update:
+upgrade:
+	git pull
+
+fetch:
 	python3 fetch-feeds -o build
 	# sometime it fails but works the next time
 	bundle exec pluto update planet.ini \
@@ -32,4 +35,4 @@ page:
 
 build: css page
 
-all: update build
+update: fetch build

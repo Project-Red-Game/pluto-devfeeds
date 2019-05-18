@@ -86,6 +86,10 @@ a {
 	width: 48%;
 }
 
+#unv-navbar div li a {
+       padding: 3pt 2pt 0pt 2pt;
+}
+
 @media screen and (max-width: 930pt) {
 	#unv-navbar div li,
 	#unv-navbar div:first-child li,

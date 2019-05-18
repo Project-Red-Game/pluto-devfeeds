@@ -7,11 +7,11 @@ $secondary-color:  #fff;
 $link-color:          #1ab0b5;
 $link-visited-color:  #1ab0b5;
 
-$std-font-size:   22px;
-$mid-font-size:   .9em;
-$small-font-size: 11px;
+$normal-font-size:   16pt;
+$medium-font-size:   .9em;
+$small-font-size: 11pt;
 
-$margin-left: 40px;
+$margin-left: 40pt;
 $margin-top: 1em;
 
 // GitLab specific
@@ -23,6 +23,6 @@ div.item-snippet {
 }
 
 div.item-snippet pre {
-	margin-top: 0px;
-	margin-bottom: 0px;
+	margin-top: 0pt;
+	margin-bottom: 0pt;
 }

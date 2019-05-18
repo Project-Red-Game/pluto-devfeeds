@@ -7,9 +7,9 @@ $secondary-color:  #fff;
 $link-color:          #1ab0b5;
 $link-visited-color:  #1ab0b5;
 
-$std-font-size:   22px;
-$mid-font-size:   .9em;
-$small-font-size: 11px;
+$normal-font-size:   16pt;
+$medium-font-size:   .9em;
+$small-font-size: 11pt;
 
 body {
 	font-family: sans-serif;
@@ -17,8 +17,8 @@ body {
 	// background-color: #F4F4F4;
 	background: #000 url(//www.unvanquished.net/wp-content/themes/unv/images/background-wbtcn-3.jpg) repeat fixed;
 	color: $primary-color;
-	margin: 0px;
-	padding: 0px;
+	margin: 0pt;
+	padding: 0pt;
 }
 
 a {
@@ -42,22 +42,22 @@ a {
 }
 
 .content {
-	padding-left: 15px;
-	padding-right: 15px;
+	padding-left: 15pt;
+	padding-right: 15pt;
 	background: #000 url(//www.unvanquished.net/wp-content/themes/unv/images/background-wbtcn-3.jpg) repeat scroll;
 }
 
 .site-footer {
 	background: #0a0a0a;
-	border-top: 5px solid #0e0e0e;
-	box-shadow: inset 0px 0px 30px 0px #000;
-	padding: 15px;
-	padding-bottom: 20px;
+	border-top: 5pt solid #0e0e0e;
+	box-shadow: inset 0pt 0px 30px 0px #000;
+	padding: 15pt;
+	padding-bottom: 20pt;
 	text-align: center;
 }
 
 .site-footer img {
-	opacity: 0.3;
+	opacity: .3;
 	width: 8%;
 }
 
@@ -67,7 +67,7 @@ a {
 }
 
 .content-title {
-	padding: $std-font-size $std-font-size $std-font-size 0px;
+	padding: $normal-font-size $normal-font-size $normal-font-size 0pt;
 }
 
 .content-title h2 {
@@ -86,7 +86,7 @@ a {
 	width: 48%;
 }
 
-@media screen and (max-width: 930px) {
+@media screen and (max-width: 930pt) {
 	#unv-navbar div li,
 	#unv-navbar div:first-child li,
 	#unv-navbar div:nth-child(2) li {
@@ -95,7 +95,7 @@ a {
 }
 
 .nav-menu1 {
-	padding-left: 0px;
+	padding-left: 0pt;
 }
 
 .menu-main-menu-left-container,

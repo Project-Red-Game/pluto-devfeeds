@@ -9,6 +9,7 @@ import argparse
 import configparser
 import urllib.request
 import os
+import re
 
 default_output_dir = "build"
 
@@ -23,8 +24,15 @@ feed_dir = os.path.join(build_dir, "feed")
 
 os.makedirs(feed_dir, exist_ok=True)
 
+# Open hidden config file
+hidden_config_file_handler = open("planet_hidden.ini", "r")
+
+# Read hidden config file
+planet_hidden_config = configparser.ConfigParser()
+planet_hidden_config.read_file(hidden_config_file_handler)
+
 # HACK: planet.ini has some value outside section, something that is unsupported by python's configparser
-# Let's praise for someone never adding more than one line outside of sections
+# Let's pray for someone never adding more than one line outside of sections
 config_file_handler = open("planet.ini", "r")
 config_file_handler.readline()
 
@@ -32,21 +40,41 @@ config_file_handler.readline()
 planet_config = configparser.ConfigParser()
 planet_config.read_file(config_file_handler)
 
-# We can close the file handler now, we got everything we need
+# We can close the file handlers now, we got everything we need
+hidden_config_file_handler.close()
 config_file_handler.close()
 
-for feed_key in planet_config.keys():
+for feed_key in planet_hidden_config.keys():
 	if feed_key == "DEFAULT":
 		continue
 	
 	print("scrapping feed: " + feed_key)
-	feed_url = planet_config.get(feed_key, "hidden_feed")
-	response = urllib.request.urlopen(feed_url)
+	hidden_feed_url = planet_hidden_config.get(feed_key, "feed")
+	feed_url = planet_config.get(feed_key, "feed")
+	feed_title = planet_config.get(feed_key, "title")
+
+	response = urllib.request.urlopen(hidden_feed_url)
 	feed_content = response.read().decode("utf-8")
 
-	# HACK: workaround relative github urls
-	if feed_url.startswith("https://github.com/"):
+	# Replace the hidden feed url with the public one
+	feed_content = feed_content.replace(hidden_feed_url, feed_url)
+
+	# Rewrite the feed title
+	p = re.compile("<title>.*</title>")
+	feed_content = p.sub("<title>" + feed_title + " activity</title>", feed_content, count=1)
+
+	if hidden_feed_url.startswith("https://github.com/"):
+		# Workaround relative github urls
 		feed_content = feed_content.replace("href=&quot;/", "href=&quot;https://github.com/")
+		# Do not disclose private token, just in case…
+		p = re.compile("\?token=[A-Za-z0-9_=-]*")
+		feed_content = p.sub("", feed_content)
+		# Rewrite html alternate url with organization's dashboard
+		p = re.compile("(?P<before><link type=\"text/html\" rel=\"alternate\" href=\"https://github.com/organizations/[^/]*)/[^/]*(?P<after>\"/>)")
+		feed_content = p.sub("\g<before>/dashboard\g<after>", feed_content)
+		# Do not disclose username used to fetch hidden feeds
+		p = re.compile("(?P<before><id>.*:/organizations/[^/]*)/[^/]*(?P<after></id>)")
+		feed_content = p.sub("\g<before>\g<after>", feed_content)
 
 	feed_file_handler = open(os.path.join(feed_dir, feed_key), "w")
 	feed_file_handler.write(feed_content)

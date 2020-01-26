@@ -4,7 +4,6 @@
 
 Gemfile.lock
 
-
 ###
 # ignore database and output folders
 
@@ -18,3 +17,7 @@ build/
 
 vendor/
 .bundle/
+
+###
+# private links
+planet_hidden.ini

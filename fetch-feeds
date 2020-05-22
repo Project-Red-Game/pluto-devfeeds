@@ -53,7 +53,8 @@ for feed_key in planet_hidden_config.keys():
 	feed_url = planet_config.get(feed_key, "feed")
 	feed_title = planet_config.get(feed_key, "title")
 
-	response = urllib.request.urlopen(hidden_feed_url)
+	request = urllib.request.Request(hidden_feed_url, headers={"User-Agent" : "Fetch Feeds"})
+	response = urllib.request.urlopen(request)
 	feed_content = response.read().decode("utf-8")
 
 	# Replace the hidden feed url with the public one
